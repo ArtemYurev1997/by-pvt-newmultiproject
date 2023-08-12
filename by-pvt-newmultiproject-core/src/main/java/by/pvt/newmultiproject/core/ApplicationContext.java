@@ -6,7 +6,7 @@ import by.pvt.newmultiproject.core.repository.ClientRepository;
 import by.pvt.newmultiproject.core.repository.ProductRepository;
 import by.pvt.newmultiproject.core.service.ClientService;
 import by.pvt.newmultiproject.core.service.ProductService;
-import by.pvt.newmultiproject.core.utils.MappingUtils;
+import by.pvt.newmultiproject.core.mapper.MappingUtils;
 
 public class ApplicationContext {
     private final MappingUtils mappingUtils = new MappingUtils();

@@ -1,4 +1,4 @@
-package by.pvt.newmultiproject.core.utils;
+package by.pvt.newmultiproject.core.mapper;
 
 import by.pvt.newmultiproject.api.dto.ClientRequest;
 import by.pvt.newmultiproject.api.dto.ClientResponse;

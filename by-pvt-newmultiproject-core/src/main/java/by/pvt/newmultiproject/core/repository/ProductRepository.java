@@ -2,14 +2,14 @@ package by.pvt.newmultiproject.core.repository;
 
 import by.pvt.newmultiproject.core.FileWorker;
 import by.pvt.newmultiproject.core.domain.Product;
-import by.pvt.newmultiproject.core.utils.MappingUtils;
+import by.pvt.newmultiproject.core.mapper.MappingUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProductRepository extends FileWorker {
-    public static String FILE = "D:\\Pvt Enterprise\\MultiProjectShop\\by-pvt-multiproject\\by-pvt-multiproject-core\\src\\main\\resources\\dbProducts";
+    public static String FILE = "D:\\Pvt Enterprise\\FirstWebServlet\\by-pvt-newmultiproject\\by-pvt-newmultiproject-core\\src\\main\\resources\\dbProducts";
 
     public static List<Product> products = new ArrayList<>();
 

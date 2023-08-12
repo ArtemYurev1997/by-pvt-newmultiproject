@@ -2,7 +2,7 @@ package by.pvt.newmultiproject.core.repository;
 
 import by.pvt.newmultiproject.core.FileWorker;
 import by.pvt.newmultiproject.core.domain.Client;
-import by.pvt.newmultiproject.core.utils.MappingUtils;
+import by.pvt.newmultiproject.core.mapper.MappingUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class ClientRepository extends FileWorker {
         this.mappingUtils = mappingUtils;
     }
 
-    public static String FILE = "D:\\Pvt Enterprise\\MultiProjectShop\\by-pvt-multiproject\\by-pvt-multiproject-core\\src\\main\\resources\\dbClient";
+    public static String FILE = "D:\\Pvt Enterprise\\FirstWebServlet\\by-pvt-newmultiproject\\by-pvt-newmultiproject-core\\src\\main\\resources\\dbClient";
 
     public static List<Client> clients = new ArrayList<>();
 

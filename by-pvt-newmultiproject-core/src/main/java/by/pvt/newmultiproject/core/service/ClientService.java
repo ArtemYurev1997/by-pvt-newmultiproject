@@ -4,7 +4,7 @@ import by.pvt.newmultiproject.api.dto.ClientRequest;
 import by.pvt.newmultiproject.api.dto.ClientResponse;
 import by.pvt.newmultiproject.core.domain.Client;
 import by.pvt.newmultiproject.core.repository.ClientRepository;
-import by.pvt.newmultiproject.core.utils.MappingUtils;
+import by.pvt.newmultiproject.core.mapper.MappingUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;

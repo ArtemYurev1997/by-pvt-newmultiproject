@@ -6,7 +6,7 @@ import by.pvt.newmultiproject.api.enums.Roles;
 import by.pvt.newmultiproject.api.enums.TypeStuff;
 import by.pvt.newmultiproject.core.controller.ClientController;
 import by.pvt.newmultiproject.core.controller.ProductController;
-import by.pvt.newmultiproject.core.utils.MappingUtils;
+import by.pvt.newmultiproject.core.mapper.MappingUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +27,8 @@ public class Main {
         for (ClientRequest user : users) {
             user.setId();
         }
-        FileWorker.serializeObject(users.stream().map(mappingUtils::mapToClientEntity).collect(Collectors.toList()), "D:\\Pvt Enterprise\\MultiProjectShop\\by-pvt-multiproject\\by-pvt-multiproject-core\\src\\main\\resources\\dbClient");
-        FileWorker.deserializeObject("D:\\Pvt Enterprise\\MultiProjectShop\\by-pvt-multiproject\\by-pvt-multiproject-core\\src\\main\\resources\\dbClient");
+        FileWorker.serializeObject(users.stream().map(mappingUtils::mapToClientEntity).collect(Collectors.toList()), "D:\\Pvt Enterprise\\FirstWebServlet\\by-pvt-newmultiproject\\by-pvt-newmultiproject-core\\src\\main\\resources\\dbClient");
+        FileWorker.deserializeObject("D:\\Pvt Enterprise\\FirstWebServlet\\by-pvt-newmultiproject\\by-pvt-newmultiproject-core\\src\\main\\resources\\dbClient");
 
 
         ProductRequest product1 = new ProductRequest("Milk", TypeStuff.FOOD, 57623L, 1.5);
@@ -50,8 +50,8 @@ public class Main {
             product.setId();
         }
 
-        FileWorker.serializeObject(products.stream().map(mappingUtils::mapToProductEntity).collect(Collectors.toList()), "D:\\Pvt Enterprise\\MultiProjectShop\\by-pvt-multiproject\\by-pvt-multiproject-core\\src\\main\\resources\\dbProducts");
-        FileWorker.deserializeObject("D:\\Pvt Enterprise\\MultiProjectShop\\by-pvt-multiproject\\by-pvt-multiproject-core\\src\\main\\resources\\dbProducts");
+        FileWorker.serializeObject(products.stream().map(mappingUtils::mapToProductEntity).collect(Collectors.toList()), "D:\\Pvt Enterprise\\FirstWebServlet\\by-pvt-newmultiproject\\by-pvt-newmultiproject-core\\src\\main\\resources\\dbProducts");
+        FileWorker.deserializeObject("D:\\Pvt Enterprise\\FirstWebServlet\\by-pvt-newmultiproject\\by-pvt-newmultiproject-core\\src\\main\\resources\\dbProducts");
 
         ApplicationContext applicationContext = ApplicationContext.getInstance();
         ClientController clientController = applicationContext.getClientController();
