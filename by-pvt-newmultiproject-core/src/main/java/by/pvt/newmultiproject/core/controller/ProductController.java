@@ -34,4 +34,9 @@ public class ProductController implements ProductApi {
         return productService.findById(id);
     }
 
+    @Override
+    public List<ProductResponse> update(Long id, ProductRequest productRequest) {
+        return productService.update(id, productRequest);
+    }
+
 }

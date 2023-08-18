@@ -24,4 +24,125 @@
     <url-pattern>/authorise</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>ProductServletAdd</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.product.ProductServletAdd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductServletAdd</servlet-name>
+    <url-pattern>/productadd</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ProductServletDelete</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.product.ProductServletDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductServletDelete</servlet-name>
+    <url-pattern>/productdelete</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ProductServletFindId</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.product.ProductServletFindById</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductServletFindId</servlet-name>
+    <url-pattern>/productid</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ProductServletUpdate</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.product.ProductServletUpdate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductServletUpdate</servlet-name>
+    <url-pattern>/productupdate</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ProductServletGetAll</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.product.ProductServletGetAll</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductServletGetAll</servlet-name>
+    <url-pattern>/products</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ClientServletGetAll</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.client.ClientServletGetAll</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClientServletGetAll</servlet-name>
+    <url-pattern>/clientgetall</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ClientServletDelete</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.client.ClientServletDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClientServletDelete</servlet-name>
+    <url-pattern>/clientdelete</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ClientServletFindById</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.client.ClientServletFindById</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClientServletFindById</servlet-name>
+    <url-pattern>/clientid</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ClientServletUpdate</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.client.ClientServletUpdate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClientServletUpdate</servlet-name>
+    <url-pattern>/clientupdate</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>LogOutServlet</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.LogOutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogOutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+
+
+  <filter>
+    <filter-name>AuthenticationFilter</filter-name>
+    <filter-class>by.pvt.newmultiproject.core.filter.AuthenticationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/servlet</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/clientgetall</url-pattern>
+  </filter-mapping>
+
+
+  <filter>
+    <filter-name>ProductFilter</filter-name>
+    <filter-class>by.pvt.newmultiproject.core.filter.ProductFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ProductFilter</filter-name>
+    <url-pattern>/product</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>ProductFilter</filter-name>
+    <url-pattern>/servlet</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>ProductFilter</filter-name>
+    <url-pattern>/clientgetall</url-pattern>
+  </filter-mapping>
 </web-app>

@@ -8,11 +8,12 @@
 <html>
 <body>
 <div>
-<b>Список всех клиентов</b>
-
+<b>Найденный клиент по id</b>
 <br>
 
-<c:out value="${users}" />
+<c:out value = "${client}" />
+
+
 </div>
 </body>
 </html>

@@ -26,7 +26,7 @@ public class RegistrationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         var clients = clientController.getAllClients();
         req.setAttribute("clients", clients);
-        req.getRequestDispatcher("/jsp/client.jsp").forward(req, resp);
+        req.getRequestDispatcher("/jsp/clientlist.jsp").forward(req, resp);
     }
 
     @Override
@@ -36,15 +36,23 @@ public class RegistrationServlet extends HttpServlet {
         String surname = req.getParameter("surname");
         String login = req.getParameter("login");
         String password = req.getParameter("password");
+        ClientResponse user;
         if (req.getParameter("role").equals("Admin")) {
             ClientRequest clientRequest = new ClientRequest(name, surname, login, password, Roles.ADMIN);
-            clientController.register(clientRequest);
+            user = clientController.register(clientRequest);
         } else {
             ClientRequest clientRequest = new ClientRequest(name, surname, login, password, Roles.CLIENT);
-            clientController.register(clientRequest);
+            user = clientController.register(clientRequest);
         }
-        List<ClientResponse> clients = clientController.getAllClients();
-        req.setAttribute("clients", clients);
-        req.getRequestDispatcher("/jsp/client.jsp").forward(req, resp);
+
+        var session = req.getSession(true);
+        session.setAttribute("clientAuthorise", user);
+        req.setAttribute("user", user);
+
+        if (user.getRole().equals(Roles.ADMIN)) {
+            req.getRequestDispatcher("/jsp/adminpage.jsp").forward(req, resp);
+        } else {
+            req.getRequestDispatcher("/jsp/clientpage.jsp").forward(req, resp);
+        }
     }
 }

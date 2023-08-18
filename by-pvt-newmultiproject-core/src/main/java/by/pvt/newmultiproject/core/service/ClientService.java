@@ -18,11 +18,11 @@ public class ClientService {
         this.mappingUtils = mappingUtils;
     }
 
-    public void add(ClientRequest clientRequest) {
-        Client client = new Client(clientRequest.getName(), clientRequest.getSurname(), clientRequest.getLogin(), clientRequest.getPassword(), clientRequest.getRole());
+    public ClientResponse add(ClientRequest clientRequest) {
+        Client client = mappingUtils.mapToClientEntity(clientRequest);
         List<Client> clients = clientRepository.getAllClients();
         client.setId((clients.get(clients.size() - 1).getId() + 1));
-        clientRepository.add(client);
+        return mappingUtils.mapToClientDto(clientRepository.add(client));
     }
 
     public List<ClientResponse> getAllClients() {
@@ -39,5 +39,9 @@ public class ClientService {
 
     public ClientResponse autorise(String login, String password) {
         return mappingUtils.mapToClientDto(clientRepository.checkPassword(login, password));
+    }
+
+    public List<ClientResponse> update(Long id, ClientRequest clientRequest) {
+        return clientRepository.updateClients(id, clientRequest).stream().map(mappingUtils::mapToClientDto).collect(Collectors.toList());
     }
 }

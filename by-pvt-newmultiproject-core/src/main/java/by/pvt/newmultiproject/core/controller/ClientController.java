@@ -15,8 +15,8 @@ public class ClientController implements ClientApi {
     }
 
     @Override
-    public void register(ClientRequest clientRequest) {
-        clientService.add(clientRequest);
+    public ClientResponse register(ClientRequest clientRequest) {
+        return clientService.add(clientRequest);
     }
 
     @Override
@@ -37,6 +37,11 @@ public class ClientController implements ClientApi {
     @Override
     public ClientResponse findClientById(Long id) {
         return clientService.findById(id);
+    }
+
+    @Override
+    public List<ClientResponse> update(Long id, ClientRequest clientRequest) {
+        return clientService.update(id, clientRequest);
     }
 
 }

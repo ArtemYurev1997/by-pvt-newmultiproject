@@ -13,4 +13,6 @@ public interface ProductApi {
     void deleteProduct(Long id);
 
     ProductResponse findProductById(Long id);
+
+    List<ProductResponse> update(Long id, ProductRequest productRequest);
 }

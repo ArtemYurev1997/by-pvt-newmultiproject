@@ -23,12 +23,6 @@
     </tаble>
         <input type=submit value="Enter">
 <br>
-<br>
-<form name="Form"
-      method="get"
-      action="http://localhost:8080/hello/authorise">
-      <input type=submit value="Authorise client">
-</form>
 <div>
 </body>
 </html>

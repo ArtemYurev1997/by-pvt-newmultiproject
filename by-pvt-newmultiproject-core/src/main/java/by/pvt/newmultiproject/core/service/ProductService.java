@@ -37,4 +37,8 @@ public class ProductService {
     public ProductResponse findById(Long id) {
         return mappingUtils.mapToProductDto(productRepository.getProductById(id));
     }
+
+    public List<ProductResponse> update(Long id, ProductRequest productRequest) {
+        return productRepository.updateProducts(id, productRequest).stream().map(mappingUtils::mapToProductDto).collect(Collectors.toList());
+    }
 }

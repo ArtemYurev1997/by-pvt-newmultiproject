@@ -8,11 +8,12 @@
 <html>
 <body>
 <div>
-<b>Список всех клиентов</b>
-
+<b>Список всех товаров</b>
 <br>
 
-<c:out value="${users}" />
+<c:out value = "${products}" />
+
+
 </div>
 </body>
 </html>

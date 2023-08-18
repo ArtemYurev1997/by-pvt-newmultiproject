@@ -8,11 +8,18 @@
 <html>
 <body>
 <div>
-<b>Список всех клиентов</b>
-
+<b>Ошибка</b>
 <br>
 
-<c:out value="${users}" />
+<c:out value = "${errorMessage}" />
+
+<form name="Form"
+      method="post"
+      action="http://localhost:8080/hello/authorise">
+
+    <input type=submit value="Authorise">
+</form>
+
 </div>
 </body>
 </html>

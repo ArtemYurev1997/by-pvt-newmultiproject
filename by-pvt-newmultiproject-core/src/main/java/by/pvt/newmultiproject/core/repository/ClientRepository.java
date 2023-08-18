@@ -1,5 +1,6 @@
 package by.pvt.newmultiproject.core.repository;
 
+import by.pvt.newmultiproject.api.dto.ClientRequest;
 import by.pvt.newmultiproject.core.FileWorker;
 import by.pvt.newmultiproject.core.domain.Client;
 import by.pvt.newmultiproject.core.mapper.MappingUtils;
@@ -34,6 +35,21 @@ public class ClientRepository extends FileWorker {
             user = (List<Client>) object;
         }
         return user;
+    }
+
+    public List<Client> updateClients(Long id, ClientRequest clientRequest)  {
+        Object object = deserializeObject(FILE);
+        if (object instanceof List<?>) {
+            clients = (List<Client>) object;
+        }
+        Client client = getClientById(id);
+        client.setName(clientRequest.getName());
+        client.setSurname(clientRequest.getSurname());
+        client.setLogin(clientRequest.getLogin());
+        client.setPassword(clientRequest.getPassword());
+        client.setRole(clientRequest.getRole());
+        serializeObject(clients, FILE);
+        return clients;
     }
 
     public void delete(Long id) {

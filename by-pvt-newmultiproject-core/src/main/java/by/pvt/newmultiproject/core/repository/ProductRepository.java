@@ -1,5 +1,6 @@
 package by.pvt.newmultiproject.core.repository;
 
+import by.pvt.newmultiproject.api.dto.ProductRequest;
 import by.pvt.newmultiproject.core.FileWorker;
 import by.pvt.newmultiproject.core.domain.Product;
 import by.pvt.newmultiproject.core.mapper.MappingUtils;
@@ -25,6 +26,20 @@ public class ProductRepository extends FileWorker {
         products.add(product);
         serializeObject(products, FILE);
         return product;
+    }
+
+    public List<Product> updateProducts(Long id, ProductRequest productRequest)  {
+        Object object = deserializeObject(FILE);
+        if (object instanceof List<?>) {
+            products = (List<Product>) object;
+        }
+        Product product = getProductById(id);
+        product.setName(productRequest.getName());
+        product.setType(productRequest.getType());
+        product.setCode(productRequest.getCode());
+        product.setPrice(productRequest.getPrice());
+        serializeObject(products, FILE);
+        return products;
     }
 
     public List<Product> getAllProducts() {

@@ -6,7 +6,7 @@ import by.pvt.newmultiproject.api.dto.ClientResponse;
 import java.util.List;
 
 public interface ClientApi {
-    void register(ClientRequest userRequest);
+    ClientResponse register(ClientRequest userRequest);
 
     ClientResponse authorise(String login, String password);
 
@@ -15,4 +15,6 @@ public interface ClientApi {
     List<ClientResponse> getAllClients();
 
     ClientResponse findClientById(Long id);
+
+    List<ClientResponse> update(Long id, ClientRequest clientRequest);
 }

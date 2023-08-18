@@ -35,12 +35,5 @@
     </tаble>
     <input type=submit value="Add">
 </form>
-
-
-<form name="Form"
-      method="get"
-      action="http://localhost:8080/hello/servlet">
-    <input type=submit value="Show all clients">
-</form>
 </body>
 </html>

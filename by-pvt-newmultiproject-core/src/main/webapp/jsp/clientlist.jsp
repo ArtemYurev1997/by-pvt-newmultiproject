@@ -9,10 +9,8 @@
 <body>
 <div>
 <b>Список всех клиентов</b>
-
 <br>
-
-<c:out value="${users}" />
+<c:out value="${clients}" />
 </div>
 </body>
 </html>
