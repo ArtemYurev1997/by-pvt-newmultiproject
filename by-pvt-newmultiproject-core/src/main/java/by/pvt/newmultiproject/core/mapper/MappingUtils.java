@@ -1,10 +1,9 @@
 package by.pvt.newmultiproject.core.mapper;
 
-import by.pvt.newmultiproject.api.dto.ClientRequest;
-import by.pvt.newmultiproject.api.dto.ClientResponse;
-import by.pvt.newmultiproject.api.dto.ProductRequest;
-import by.pvt.newmultiproject.api.dto.ProductResponse;
+import by.pvt.newmultiproject.api.dto.*;
+import by.pvt.newmultiproject.core.domain.Basket;
 import by.pvt.newmultiproject.core.domain.Client;
+import by.pvt.newmultiproject.core.domain.Order;
 import by.pvt.newmultiproject.core.domain.Product;
 
 public class MappingUtils {
@@ -51,5 +50,32 @@ public class MappingUtils {
         entity.setPassword(dto.getPassword());
         entity.setRole(dto.getRole());
         return entity;
+    }
+
+    public OrderDto mapToOrderDto(Order order){
+        OrderDto dto = new OrderDto();
+        dto.setId(order.getId());
+        dto.setCost(order.getCost());
+        dto.setUserId(order.getUserId());
+        dto.setStatus(order.getStatus());
+        return dto;
+    }
+
+    public OrderResponse mapToOrderResponse(Order order){
+        OrderResponse dto = new OrderResponse();
+        dto.setId(order.getId());
+        dto.setCost(order.getCost());
+        dto.setUserId(order.getUserId());
+        dto.setStatus(order.getStatus());
+        return dto;
+    }
+
+    public BasketDto mapToBasketDto(Basket basket){
+        BasketDto basketDto = new BasketDto();
+        basketDto.setId(basket.getId());
+        basketDto.setProductId(basket.getProductId());
+        basketDto.setOrderId(basket.getOrderId());
+        basketDto.setCount(basket.getCount());
+        return basketDto;
     }
 }

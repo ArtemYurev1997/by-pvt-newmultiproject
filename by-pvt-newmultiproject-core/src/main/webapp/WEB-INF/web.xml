@@ -105,6 +105,36 @@
     <url-pattern>/clientupdate</url-pattern>
   </servlet-mapping>
 
+
+  <servlet>
+    <servlet-name>BucketServletAdd</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.basket.BasketServletAdd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BucketServletAdd</servlet-name>
+    <url-pattern>/bucketservletadd</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>BucketServletDelete</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.basket.BasketServletDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BucketServletDelete</servlet-name>
+    <url-pattern>/bucketservletdelete</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>OrderServlet</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.order.OrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderServlet</servlet-name>
+    <url-pattern>/orderservlet</url-pattern>
+  </servlet-mapping>
+
+
   <servlet>
     <servlet-name>LogOutServlet</servlet-name>
     <servlet-class>by.pvt.newmultiproject.core.servlets.LogOutServlet</servlet-class>
