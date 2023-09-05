@@ -1,30 +1,48 @@
 package by.pvt.newmultiproject.core;
 
+import by.pvt.newmultiproject.core.config.PostgreConnection;
 import by.pvt.newmultiproject.core.controller.BasketController;
 import by.pvt.newmultiproject.core.controller.ClientController;
 import by.pvt.newmultiproject.core.controller.OrderController;
 import by.pvt.newmultiproject.core.controller.ProductController;
+import by.pvt.newmultiproject.core.mapper.*;
 import by.pvt.newmultiproject.core.repository.BasketRepository;
 import by.pvt.newmultiproject.core.repository.ClientRepository;
 import by.pvt.newmultiproject.core.repository.OrderRepository;
 import by.pvt.newmultiproject.core.repository.ProductRepository;
+import by.pvt.newmultiproject.core.repository.impl.BasketRepositoryDBImpl;
+import by.pvt.newmultiproject.core.repository.impl.ClientRepositoryDBImpl;
+import by.pvt.newmultiproject.core.repository.impl.OrderRepositoryDBImpl;
+import by.pvt.newmultiproject.core.repository.impl.ProductRepositoryDBImpl;
 import by.pvt.newmultiproject.core.service.BasketService;
 import by.pvt.newmultiproject.core.service.ClientService;
 import by.pvt.newmultiproject.core.service.OrderService;
 import by.pvt.newmultiproject.core.service.ProductService;
-import by.pvt.newmultiproject.core.mapper.MappingUtils;
 
 public class ApplicationContext {
     private final MappingUtils mappingUtils = new MappingUtils();
+    private final PostgreConnection postgreConnection = new PostgreConnection();
+    private final MapperClientDB mapperDB = new MapperClientDB();
+    private final MapperProductDB mapperProductDB = new MapperProductDB();
+    private final MapperOrderDB mapperOrderDB = new MapperOrderDB();
+    private final MapperBasketDB mapperBasketDB = new MapperBasketDB();
+
     private final ClientRepository clientRepository = new ClientRepository(mappingUtils);
+
+    private final ClientRepositoryDBImpl clientRepositoryDB = new ClientRepositoryDBImpl(postgreConnection, mapperDB);
+    private final ProductRepositoryDBImpl productRepositoryDB = new ProductRepositoryDBImpl(postgreConnection, mapperProductDB);
+    private final BasketRepositoryDBImpl basketRepositoryDB = new BasketRepositoryDBImpl(postgreConnection, mapperBasketDB);
+
     private final ProductRepository productRepository = new ProductRepository(mappingUtils);
     private final BasketRepository basketRepository = new BasketRepository();
-    private final ClientService clientService = new ClientService(clientRepository, mappingUtils);
-    private final ProductService productService = new ProductService(productRepository, mappingUtils, basketRepository);
-    private final BasketRepository bucketRepository = new BasketRepository();
-    private final BasketService basketService = new BasketService(bucketRepository, productRepository, mappingUtils);
+
+    private final ClientService clientService = new ClientService(clientRepository, clientRepositoryDB, mappingUtils);
+    private final ProductService productService = new ProductService(productRepositoryDB, productRepository, mappingUtils, basketRepository, basketRepositoryDB);
+    private final BasketService basketService = new BasketService(basketRepository, productRepository, mappingUtils, basketRepositoryDB);
+
     private final OrderRepository orderRepository = new OrderRepository();
-    private final OrderService orderService = new OrderService(bucketRepository, productRepository, orderRepository, mappingUtils, productService);
+    private final OrderRepositoryDBImpl orderRepositoryDB = new OrderRepositoryDBImpl(postgreConnection, mapperOrderDB);
+    private final OrderService orderService = new OrderService(basketRepository, productRepository, orderRepositoryDB, orderRepository, mappingUtils, productService);
 
     private static ApplicationContext applicationContext;
     private static ClientController clientController;

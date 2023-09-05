@@ -22,6 +22,15 @@ public class Client implements Serializable {
         this.role = role;
     }
 
+    public Client(Long id, String name, String surname, String login, String password, Roles role) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.login = login;
+        this.password = password;
+        this.role = role;
+    }
+
     public Client() {
     }
 

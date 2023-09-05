@@ -5,6 +5,7 @@ import by.pvt.newmultiproject.core.domain.Basket;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class BasketRepository extends FileWorker {
@@ -73,6 +74,13 @@ public class BasketRepository extends FileWorker {
         return productIdList;
     }
 
+//    public void deleteProductByProductIdAndOrderId(Long productId, Long orderId) {
+//        List<Basket> baskets = getBucketsByOrderId(orderId);
+//
+//        Optional<Long> idProduct = baskets.stream().map(Basket::getProductId).findFirst();
+//
+//    }
+
 
 
     public void delete(Long id) {
@@ -89,5 +97,24 @@ public class BasketRepository extends FileWorker {
         }
         serializeObject(buckets, FILE);
         System.out.println(buckets);
+    }
+
+//    public void saveChangesWithAccount() {
+//        serializeObject(buckets, FILE);
+//        updateBaskets();
+//    }
+//
+//    public List<Basket> updateBaskets()  {
+//        Object object = deserializeObject(FILE);
+//        if(object instanceof List<?>) {
+//            buckets = (List<Basket>) object;
+//        }
+//        return buckets;
+//    }
+
+    public List<Basket> save(Basket basket) {
+        buckets.add(basket);
+        serializeObject(buckets, FILE);
+        return buckets;
     }
 }

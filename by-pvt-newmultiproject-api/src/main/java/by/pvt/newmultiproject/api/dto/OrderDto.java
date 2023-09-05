@@ -3,11 +3,12 @@ package by.pvt.newmultiproject.api.dto;
 import by.pvt.newmultiproject.api.enums.Status;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDto implements Serializable {
     private Long id;
-    private List<ProductResponse> products;
+    private List<ProductResponse> products = new ArrayList<>();
     private Double cost;
     private Long userId;
     private Status status;

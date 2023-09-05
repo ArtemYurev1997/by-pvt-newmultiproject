@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class OrderRepository  extends FileWorker {
+public class OrderRepository  extends FileWorker implements OrderRepositoryDB{
     public static String FILE = "D:\\Pvt Enterprise\\FirstWebServlet\\by-pvt-newmultiproject\\by-pvt-newmultiproject-core\\src\\main\\resources\\dbOrder";
 
     public OrderRepository() {
@@ -15,6 +15,7 @@ public class OrderRepository  extends FileWorker {
 
     public static List<Order> orders = new ArrayList<>();
 
+    @Override
     public List<Order> getAllOrders() {
         Object object = deserializeObject(FILE);
         List<Order> orderList = new ArrayList<>();
@@ -24,6 +25,7 @@ public class OrderRepository  extends FileWorker {
         return orderList;
     }
 
+    @Override
     public Order add(Order order) {
         orders = getAllOrders();
         orders.add(order);
@@ -31,6 +33,7 @@ public class OrderRepository  extends FileWorker {
         return order;
     }
 
+    @Override
     public Order updateOrder(Long id, Order newOrder) {
         Object object = deserializeObject(FILE);
         if (object instanceof List<?>) {
@@ -44,16 +47,19 @@ public class OrderRepository  extends FileWorker {
         return order;
     }
 
+    @Override
     public Order getOrderById(Long id) {
         orders = getAllOrders();
-        return orders.stream().filter(order -> order.getId().equals(id)).findFirst().orElse(null);
+        return orders.stream().filter(order -> order.getId().equals(id)).findFirst().orElse(new Order());
     }
 
+    @Override
     public List<Order> getOrderByUserId(Long userId) {
         orders = getAllOrders();
         return orders.stream().filter(order -> order.getUserId().equals(userId)).collect(Collectors.toList());
     }
 
+    @Override
     public void delete(Long id) {
         orders = getAllOrders();
         if (orders.isEmpty()) {
@@ -68,5 +74,15 @@ public class OrderRepository  extends FileWorker {
         }
         serializeObject(orders, FILE);
         System.out.println(orders);
+    }
+
+    @Override
+    public void addOrder(Order order) {
+
+    }
+
+    @Override
+    public void update(Long id, Order order) {
+
     }
 }

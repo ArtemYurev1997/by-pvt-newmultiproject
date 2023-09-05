@@ -18,6 +18,16 @@ public class OrderRequest implements Serializable {
         this.status = status;
     }
 
+    public OrderRequest(Long id, Long userId, Double cost, Status status) {
+        this.id=id;
+        this.userId = userId;
+        this.cost = cost;
+        this.status = status;
+    }
+
+    public OrderRequest() {
+    }
+
     public Long getId() {
         return id;
     }

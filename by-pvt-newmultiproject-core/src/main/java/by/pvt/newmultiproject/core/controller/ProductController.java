@@ -40,6 +40,10 @@ public class ProductController implements ProductApi {
         return productService.update(id, productRequest);
     }
 
+    public void updateDB(Long id, ProductRequest productRequest) {
+        productService.updateDB(id, productRequest);
+    }
+
     public ProductResponse getProductByProductId(Long id, Long orderId) {
         return productService.getProductByProductId(id, orderId);
     }

@@ -19,6 +19,13 @@ public class OrderResponse implements Serializable {
     }
     public OrderResponse(){}
 
+    public OrderResponse(Long id, Long userId, Double cost, Status status) {
+        this.id =id;
+        this.userId = userId;
+        this.cost = cost;
+        this.status = status;
+    }
+
     public Long getId() {
         return id;
     }

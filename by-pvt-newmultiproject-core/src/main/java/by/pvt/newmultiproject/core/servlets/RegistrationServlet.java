@@ -24,9 +24,9 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        var clients = clientController.getAllClients();
-        req.setAttribute("clients", clients);
-        req.getRequestDispatcher("/jsp/clientlist.jsp").forward(req, resp);
+//        var clients = clientController.getAllClients();
+//        req.setAttribute("clients", clients);
+//        req.getRequestDispatcher("/jsp/clientlist.jsp").forward(req, resp);
     }
 
     @Override
@@ -39,10 +39,14 @@ public class RegistrationServlet extends HttpServlet {
         ClientResponse user;
         if (req.getParameter("role").equals("Admin")) {
             ClientRequest clientRequest = new ClientRequest(name, surname, login, password, Roles.ADMIN);
-            user = clientController.register(clientRequest);
+            clientController.addUser(clientRequest);
+            user = clientController.getClient();
+//            user = clientController.register(clientRequest);
         } else {
             ClientRequest clientRequest = new ClientRequest(name, surname, login, password, Roles.CLIENT);
-            user = clientController.register(clientRequest);
+            clientController.addUser(clientRequest);
+            user = clientController.getClient();
+//            user = clientController.register(clientRequest);
         }
 
         var session = req.getSession(true);

@@ -33,8 +33,8 @@ public class ClientServletUpdate extends HttpServlet {
         else {
             clientRequest = new ClientRequest(name, surname, login, password, Roles.CLIENT);
         }
-        var clients = clientController.update(id, clientRequest);
-        req.setAttribute("users", clients);
+          clientController.updateDB(id, clientRequest);
+        req.setAttribute("users", clientController.getAllClients());
         req.getRequestDispatcher("/jsp/client.jsp").forward(req, resp);
     }
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ClientRepository extends FileWorker {
+public class ClientRepository extends FileWorker implements ClientRepositoryDB{
 
     private final MappingUtils mappingUtils;
 
@@ -21,6 +21,7 @@ public class ClientRepository extends FileWorker {
 
     public static List<Client> clients = new ArrayList<>();
 
+    @Override
     public Client add(Client client) {
         clients = getAllClients();
         clients.add(client);
@@ -28,6 +29,8 @@ public class ClientRepository extends FileWorker {
         return client;
     }
 
+
+    @Override
     public List<Client> getAllClients() {
         Object object = deserializeObject(FILE);
         List<Client> user = new ArrayList<>();
@@ -37,6 +40,7 @@ public class ClientRepository extends FileWorker {
         return user;
     }
 
+    @Override
     public List<Client> updateClients(Long id, ClientRequest clientRequest)  {
         Object object = deserializeObject(FILE);
         if (object instanceof List<?>) {
@@ -52,6 +56,7 @@ public class ClientRepository extends FileWorker {
         return clients;
     }
 
+    @Override
     public void delete(Long id) {
         clients = getAllClients();
         if (clients.isEmpty()) {
@@ -68,11 +73,14 @@ public class ClientRepository extends FileWorker {
         System.out.println(clients.stream().map(mappingUtils::mapToClientDto).collect(Collectors.toList()));
     }
 
+
+    @Override
     public Client getClientById(Long id) {
         clients = getAllClients();
         return clients.stream().filter(client -> client.getId().equals(id)).findFirst().orElse(null);
     }
 
+    @Override
     public Client checkPassword(String login, String password) {
         List<Client> clients = getAllClients();
         Client client = clients.stream().filter(client1 -> client1.getLogin().equals(login)).findFirst().orElse(null);
@@ -80,6 +88,16 @@ public class ClientRepository extends FileWorker {
             throw new RuntimeException("Error");
         }
         return client;
+    }
+
+
+    @Override
+    public void update(Long id, ClientRequest clientRequest) {
+    }
+
+    @Override
+    public void addUser(Client client) {
+
     }
 
 }

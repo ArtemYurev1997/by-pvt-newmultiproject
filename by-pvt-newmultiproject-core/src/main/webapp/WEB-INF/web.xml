@@ -126,12 +126,48 @@
 
 
   <servlet>
-    <servlet-name>OrderServlet</servlet-name>
-    <servlet-class>by.pvt.newmultiproject.core.servlets.order.OrderServlet</servlet-class>
+    <servlet-name>OrderServletAdd</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.order.OrderServletAdd</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>OrderServlet</servlet-name>
-    <url-pattern>/orderservlet</url-pattern>
+    <servlet-name>OrderServletAdd</servlet-name>
+    <url-pattern>/orderservletadd</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>OrderServletDelete</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.order.OrderServletDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderServletDelete</servlet-name>
+    <url-pattern>/orderservletdelete</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>OrderServletUpdate</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.order.OrderServletUpdate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderServletUpdate</servlet-name>
+    <url-pattern>/orderservletupdate</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>OrderServletGetAll</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.order.OrderServletGetAll</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderServletGetAll</servlet-name>
+    <url-pattern>/orderservletgetall</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>OrderServletFind</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.order.OrderServletFindById</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderServletFind</servlet-name>
+    <url-pattern>/orderservletfindbyid</url-pattern>
   </servlet-mapping>
 
 
@@ -149,10 +185,10 @@
     <filter-name>AuthenticationFilter</filter-name>
     <filter-class>by.pvt.newmultiproject.core.filter.AuthenticationFilter</filter-class>
   </filter>
-  <filter-mapping>
-    <filter-name>AuthenticationFilter</filter-name>
-    <url-pattern>/servlet</url-pattern>
-  </filter-mapping>
+<!--  <filter-mapping>-->
+<!--    <filter-name>AuthenticationFilter</filter-name>-->
+<!--    <url-pattern>/servlet</url-pattern>-->
+<!--  </filter-mapping>-->
   <filter-mapping>
     <filter-name>AuthenticationFilter</filter-name>
     <url-pattern>/clientgetall</url-pattern>
@@ -167,10 +203,10 @@
     <filter-name>ProductFilter</filter-name>
     <url-pattern>/product</url-pattern>
   </filter-mapping>
-  <filter-mapping>
-    <filter-name>ProductFilter</filter-name>
-    <url-pattern>/servlet</url-pattern>
-  </filter-mapping>
+<!--  <filter-mapping>-->
+<!--    <filter-name>ProductFilter</filter-name>-->
+<!--    <url-pattern>/servlet</url-pattern>-->
+<!--  </filter-mapping>-->
   <filter-mapping>
     <filter-name>ProductFilter</filter-name>
     <url-pattern>/clientgetall</url-pattern>

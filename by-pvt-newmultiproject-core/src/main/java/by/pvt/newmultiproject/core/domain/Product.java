@@ -20,6 +20,14 @@ public class Product implements Serializable {
         this.price = price;
     }
 
+    public Product(Long id, String name, TypeStuff type, Long code, Double price) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.code = code;
+        this.price = price;
+    }
+
     public Product() {
     }
 

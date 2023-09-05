@@ -190,5 +190,97 @@
       action="http://localhost:8080/hello/logout">
     <input type=submit value="LogOut">
 </form>
+
+
+<br>
+<b>Добавление заказа</b>
+<br>
+<form name="Form"
+      method="post"
+      action="http://localhost:8080/hello/orderservletadd">
+    <tаble>
+        <tr>
+            <td><B>Id</B></td>
+            <td><input type=textbox name="id" size="25" value=" "></td>
+        </tr>
+        <tr>
+            <td><B>User Id</B></td>
+            <td><input type=textbox name="userId" size="25" value=" "></td>
+        </tr>
+        <tr>
+            <td><B>Costs</B></td>
+            <td><input type=textbox name="costs" size="25" value=" "></td>
+        </tr>
+        <tr>
+            <td><B>Status</B></td>
+            <td><input type=textbox name="status" size="25" value=" "></td>
+        </tr>
+    </tаble>
+    <input type=submit value="Add">
+</form>
+
+<form name="Form"
+      method="get"
+      action="http://localhost:8080/hello/orderservletadd">
+    <input type=submit value="All Orders">
+</form>
+
+<br>
+<b>Удаление заказа</b>
+<br>
+<form name="Form"
+      method="post"
+      action="http://localhost:8080/hello/orderservletdelete">
+      <tаble>
+              <tr>
+                  <td><B>Id Order</B></td>
+                  <td><input type=textbox name="id" size="25" value=" "></td>
+              </tr>
+      </tаble>
+    <input type=submit value="Delete order">
+</form>
+
+<br>
+<b>Получение заказа по id</b>
+<br>
+<form name="Form"
+      method="post"
+      action="http://localhost:8080/hello/orderservletfindbyid">
+      <tаble>
+              <tr>
+                  <td><B>Id Order</B></td>
+                  <td><input type=textbox name="id" size="25" value=" "></td>
+              </tr>
+      </tаble>
+    <input type=submit value="Enter">
+</form>
+
+<br>
+<b>Обновление заказа</b>
+<br>
+<form name="Form"
+      method="post"
+      action="http://localhost:8080/hello/orderservletupdate">
+       <tаble>
+               <tr>
+                   <td><B>Id</B></td>
+                   <td><input type=textbox name="id" size="25" value=" "></td>
+               </tr>
+               <tr>
+                   <td><B>User Id</B></td>
+                   <td><input type=textbox name="userId" size="25" value=" "></td>
+               </tr>
+               <tr>
+                   <td><B>Costs</B></td>
+                   <td><input type=textbox name="costs" size="25" value=" "></td>
+               </tr>
+               <tr>
+                   <td><B>Status</B></td>
+                   <td><input type=textbox name="status" size="25" value=" "></td>
+               </tr>
+           </tаble>
+    <input type=submit value="Update order">
+</form>
+
 </body>
 </html>

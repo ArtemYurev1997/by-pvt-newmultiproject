@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ProductRepository extends FileWorker {
+public class ProductRepository extends FileWorker implements ProductRepositoryDB{
     public static String FILE = "D:\\Pvt Enterprise\\FirstWebServlet\\by-pvt-newmultiproject\\by-pvt-newmultiproject-core\\src\\main\\resources\\dbProducts";
 
     public static List<Product> products = new ArrayList<>();
@@ -20,7 +20,7 @@ public class ProductRepository extends FileWorker {
         this.mappingUtils = mappingUtils;
     }
 
-
+    @Override
     public Product addProduct(Product product) {
         products = getAllProducts();
         products.add(product);
@@ -28,6 +28,7 @@ public class ProductRepository extends FileWorker {
         return product;
     }
 
+    @Override
     public List<Product> updateProducts(Long id, ProductRequest productRequest)  {
         Object object = deserializeObject(FILE);
         if (object instanceof List<?>) {
@@ -42,6 +43,7 @@ public class ProductRepository extends FileWorker {
         return products;
     }
 
+    @Override
     public List<Product> getAllProducts() {
         Object object = deserializeObject(FILE);
         List<Product> product = new ArrayList<>();
@@ -51,6 +53,7 @@ public class ProductRepository extends FileWorker {
         return product;
     }
 
+    @Override
     public void deleteProduct(Long id) {
         products = getAllProducts();
         if(products.isEmpty()) {
@@ -66,6 +69,12 @@ public class ProductRepository extends FileWorker {
         System.out.println(products.stream().map(mappingUtils::mapToProductDto).collect(Collectors.toList()));
     }
 
+    @Override
+    public void addProductDB(Product product) {
+
+    }
+
+    @Override
     public Product getProductById(Long id) {
         products = getAllProducts();
         return products.stream().filter(product -> product.getId().equals(id)).findFirst().orElse(null);

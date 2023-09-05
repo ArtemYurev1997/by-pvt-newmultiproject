@@ -15,6 +15,9 @@ public class Basket implements Serializable {
         this.count = count;
     }
 
+    public Basket() {
+    }
+
     public Long getId() {
         return id;
     }

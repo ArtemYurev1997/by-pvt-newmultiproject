@@ -2,11 +2,13 @@ package by.pvt.newmultiproject.core.service;
 
 import by.pvt.newmultiproject.api.dto.BasketDto;
 import by.pvt.newmultiproject.api.dto.ProductResponse;
+import by.pvt.newmultiproject.core.FileWorker;
 import by.pvt.newmultiproject.core.domain.Basket;
 import by.pvt.newmultiproject.core.domain.Product;
 import by.pvt.newmultiproject.core.mapper.MappingUtils;
 import by.pvt.newmultiproject.core.repository.BasketRepository;
 import by.pvt.newmultiproject.core.repository.ProductRepository;
+import by.pvt.newmultiproject.core.repository.impl.BasketRepositoryDBImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,15 +18,25 @@ public class BasketService {
     private final BasketRepository bucketRepository;
     private final ProductRepository productRepository;
     private final MappingUtils mappingUtils;
+    private final BasketRepositoryDBImpl basketRepositoryDB;
 
-    public BasketService(BasketRepository bucketRepository, ProductRepository productRepository, MappingUtils mappingUtils) {
+    public BasketService(BasketRepository bucketRepository, ProductRepository productRepository, MappingUtils mappingUtils, BasketRepositoryDBImpl basketRepositoryDB) {
         this.bucketRepository = bucketRepository;
         this.productRepository = productRepository;
         this.mappingUtils = mappingUtils;
+        this.basketRepositoryDB = basketRepositoryDB;
     }
 
     public Basket add(Basket bucket) {
         return bucketRepository.add(bucket);
+    }
+
+    public void addBasket(Basket basket) {
+        basketRepositoryDB.add(basket);
+    }
+
+    public void updateBasket(Long id, Basket basket) {
+        basketRepositoryDB.updateBasket(id, basket);
     }
 
     public Basket updateBucket(Long id, Basket newBucket) {
@@ -33,6 +45,10 @@ public class BasketService {
 
     public void delete(Long id) {
         bucketRepository.delete(id);
+    }
+
+    public void deleteBasket(Long id) {
+        basketRepositoryDB.delete(id);
     }
 
     public Basket getBucketById(Long id, Long orderId) {
@@ -48,15 +64,11 @@ public class BasketService {
         return bucketList;
     }
 
-    public BasketDto createBasket(Long sessionId){
-        BasketDto basketDto = new BasketDto();
-//        basketDto.setId();
-//        basketDto.setOrderId();
-//        basketDto.setProductId();
-//        basketDto.setProducts();
-//        basketDto.setCount();
-        return basketDto;
+    public List<Basket> getBasketByOrderId(Long orderId) {
+        return basketRepositoryDB.getBasketByOrderId(orderId);
     }
+
+
 
     public BasketDto addProduct(Long productId, Long sessionId){
         Product product = productRepository.getProductById(productId);
@@ -66,6 +78,7 @@ public class BasketService {
         ProductResponse productResponse = mappingUtils.mapToProductDto(product);
         newList.add(productResponse);
         basketDto.setProducts(newList);
+        bucketRepository.save(mappingUtils.mapToBasket(basketDto));
         return basketDto;
     }
 
@@ -77,6 +90,7 @@ public class BasketService {
         ProductResponse productResponse = mappingUtils.mapToProductDto(product);
         newList.remove(productResponse);
         basketDto.setProducts(newList);
+        bucketRepository.save(mappingUtils.mapToBasket(basketDto));
         return basketDto;
     }
 }

@@ -70,6 +70,15 @@ public class MappingUtils {
         return dto;
     }
 
+    public Order mapToOrderEntity(OrderRequest orderRequest){
+        Order dto = new Order();
+        dto.setId(orderRequest.getId());
+        dto.setCost(orderRequest.getCost());
+        dto.setUserId(orderRequest.getUserId());
+        dto.setStatus(orderRequest.getStatus());
+        return dto;
+    }
+
     public BasketDto mapToBasketDto(Basket basket){
         BasketDto basketDto = new BasketDto();
         basketDto.setId(basket.getId());
@@ -77,5 +86,14 @@ public class MappingUtils {
         basketDto.setOrderId(basket.getOrderId());
         basketDto.setCount(basket.getCount());
         return basketDto;
+    }
+
+    public Basket mapToBasket(BasketDto basketDto){
+        Basket basket = new Basket();
+        basket.setId(basketDto.getId());
+        basket.setProductId(basketDto.getProductId());
+        basket.setOrderId(basketDto.getOrderId());
+        basket.setCount(basketDto.getCount());
+        return basket;
     }
 }

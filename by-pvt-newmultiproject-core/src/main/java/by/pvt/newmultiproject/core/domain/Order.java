@@ -18,6 +18,16 @@ public class Order implements Serializable {
         this.status = status;
     }
 
+    public Order(Long id, Long userId, Double cost, Status status) {
+        this.id = id;
+        this.userId = userId;
+        this.cost = cost;
+        this.status = status;
+    }
+
+    public Order() {
+    }
+
     public Long getId() {
         return id;
     }
