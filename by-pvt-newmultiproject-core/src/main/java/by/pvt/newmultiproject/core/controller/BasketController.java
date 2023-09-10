@@ -52,6 +52,10 @@ public class BasketController {
         return bucketService.getBasketByOrderId(orderId);
     }
 
+    public List<Long> getProductIdByBucketList(Long orderId) {
+        return bucketService.getProductIdByBucketList(orderId);
+    }
+
     public BasketDto addProduct(Long productId, Long sessionId){
         return bucketService.addProduct(productId, sessionId);
     }

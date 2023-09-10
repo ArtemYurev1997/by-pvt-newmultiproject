@@ -1,6 +1,7 @@
 package by.pvt.newmultiproject.core;
 
 import by.pvt.newmultiproject.api.dto.ClientRequest;
+import by.pvt.newmultiproject.api.dto.OrderRequest;
 import by.pvt.newmultiproject.api.dto.ProductRequest;
 import by.pvt.newmultiproject.api.enums.Roles;
 import by.pvt.newmultiproject.api.enums.Status;
@@ -115,7 +116,7 @@ public class Main {
 //        productController.deleteProduct(4L);
 //        System.out.println(productController.findProductById(1L));
 //
-//        ProductRequest productRequest = new ProductRequest("Meat", TypeStuff.FOOD, 23657L, 6.8);
+//        ProductRequest productRequest = new ProductRequest("Кетчуп", TypeStuff.FOOD, 2548834L, 2.6);
 //        productController.addProduct(productRequest);
 //        productController.deleteProduct(11L);
 
@@ -134,17 +135,27 @@ public class Main {
 
 //        System.out.println(orderController.getOrderById(3L));
 //        System.out.println(orderController.getOrderByUserId(1L));
-//        orderController.addOrder(new Order(3L, 27.6, Status.DONE));
+//        orderController.addOrder(new OrderRequest(3L, 23.9, Status.WAITING_FOR_THE_COURIER));
 //        clientController.updateDB(11L, new ClientRequest("Эмиль", "Нуриев", "Emil1414", "9775", Roles.CLIENT));
 //        System.out.println(clientController.authorise("Andrew17", "5757"));
 //        productController.updateDB(11L, new ProductRequest("Спагетти", TypeStuff.FOOD, 229935L, 3.5));
 //        System.out.println(orderController.getOrderByUserId(3L));
 //        System.out.println(basketController.getBasketByOrderId(1L));
 
-//        System.out.println(basketController.addProduct(2L, 1L));
+//        System.out.println(basketController.addProduct(3L, 1L));
 //        System.out.println(basketController.deleteProduct(2L, 1L));
 //        clientController.addUser(new ClientRequest("Дмитрий", "Васильев", "Dima322", "3322", Roles.CLIENT));
-        System.out.println(clientController.getClient());
+//        System.out.println(clientController.getClient());
+
+//        System.out.println(orderController.getOrderByOrderId(1L));
+        System.out.println(orderController.deleteProductByOrderFromBasket(1L, 1L));
+
+//        System.out.println(basketController.addProduct(4L, 2L));
+//        System.out.println(basketController.addProduct(6L, 7L));
+
+//        System.out.println(orderController.createOrder(8L, 6L));
+//          System.out.println(basketController.addProduct(8L, 6L));
+//        System.out.println(orderController.changeStatus(11L, 10));
 
     }
 }

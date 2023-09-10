@@ -170,6 +170,36 @@
     <url-pattern>/orderservletfindbyid</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>OrderServletCreateOrder</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.order.OrderServletCreateOrder</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderServletCreateOrder</servlet-name>
+    <url-pattern>/orderservletcreateorder</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>OrderServletCheckout</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.order.OrderServletCheckout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderServletCheckout</servlet-name>
+    <url-pattern>/orderservletcheckout</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>OrderServletFindByOrderId</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.order.OrderServletFindByOrderId</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderServletFindByOrderId</servlet-name>
+    <url-pattern>/orderservletfindbyorderid</url-pattern>
+  </servlet-mapping>
+
+
+
 
   <servlet>
     <servlet-name>LogOutServlet</servlet-name>
@@ -181,18 +211,34 @@
   </servlet-mapping>
 
 
+  <servlet>
+    <servlet-name>ComeBackServlet</servlet-name>
+    <servlet-class>by.pvt.newmultiproject.core.servlets.ComeBackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ComeBackServlet</servlet-name>
+    <url-pattern>/comeback</url-pattern>
+  </servlet-mapping>
+
+
+
+
+
   <filter>
     <filter-name>AuthenticationFilter</filter-name>
     <filter-class>by.pvt.newmultiproject.core.filter.AuthenticationFilter</filter-class>
   </filter>
-<!--  <filter-mapping>-->
-<!--    <filter-name>AuthenticationFilter</filter-name>-->
-<!--    <url-pattern>/servlet</url-pattern>-->
-<!--  </filter-mapping>-->
+
   <filter-mapping>
     <filter-name>AuthenticationFilter</filter-name>
     <url-pattern>/clientgetall</url-pattern>
   </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/orderservletadd</url-pattern>
+  </filter-mapping>
+
 
 
   <filter>
@@ -203,12 +249,20 @@
     <filter-name>ProductFilter</filter-name>
     <url-pattern>/product</url-pattern>
   </filter-mapping>
-<!--  <filter-mapping>-->
-<!--    <filter-name>ProductFilter</filter-name>-->
-<!--    <url-pattern>/servlet</url-pattern>-->
-<!--  </filter-mapping>-->
+
   <filter-mapping>
     <filter-name>ProductFilter</filter-name>
     <url-pattern>/clientgetall</url-pattern>
   </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>ProductFilter</filter-name>
+    <url-pattern>/orderservletgetall</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>ProductFilter</filter-name>
+    <url-pattern>/orderservletadd</url-pattern>
+  </filter-mapping>
+
 </web-app>

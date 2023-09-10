@@ -38,7 +38,7 @@ public class OrderRepositoryDBImpl implements OrderRepositoryDB {
                 String userId = resultSet.getString(2);
                 String costs = resultSet.getString(3);
                 String status = resultSet.getString(4);
-                Order order = null;
+                Order order;
                 if(status.equals("Unformed")) {
                     order = new Order(Long.valueOf(id), Long.valueOf(userId), Double.valueOf(costs), Status.UNFORMED);
                 }
@@ -58,6 +58,25 @@ public class OrderRepositoryDBImpl implements OrderRepositoryDB {
             e.printStackTrace();
         }
         return orders;
+    }
+
+    public Order getOrder() {
+        Connection connection;
+        Order order = null;
+        try {
+            connection = jdbcConnection.getConnection();
+            Statement statement = connection.createStatement();
+            statement.executeQuery(MAX_ID);
+            ResultSet resultSet = statement.getResultSet();
+            while (resultSet.next()) {
+                String id = resultSet.getString(1);
+                order = getOrderById(Long.valueOf(id));
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return order;
     }
 
 
@@ -136,7 +155,7 @@ public class OrderRepositoryDBImpl implements OrderRepositoryDB {
     }
 
     @Override
-    public List<Order> getOrderByUserId(Long userId) {
+    public List<Order> getOrdersByUserId(Long userId) {
         Connection connection;
         List<Order> orders = new ArrayList<>();
         try {
@@ -167,6 +186,36 @@ public class OrderRepositoryDBImpl implements OrderRepositoryDB {
             }
             return orders;
     }
+
+    @Override
+    public Order getOrderByUserId(Long userId) {
+        Connection connection = null;
+        try {
+            connection = jdbcConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from shopsch.order o where o.user_id=?");
+            preparedStatement.setLong(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet == null) {
+                return new Order();
+            }
+            resultSet.next();
+            return mapperOrderDB.mapResultSetToOrder(resultSet);
+        }
+        catch(SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
+
 
     @Override
     public Order add(Order order) {

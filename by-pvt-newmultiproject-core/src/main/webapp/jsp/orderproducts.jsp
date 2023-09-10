@@ -10,10 +10,10 @@
 <div>
 <b>Заказы пользователя</b>
 <br>
-<li>
+
 <c:forEach var="orders" items="${order}">
 <c:out value="${orders}" />
-</li>
+
 </c:forEach>
 
 

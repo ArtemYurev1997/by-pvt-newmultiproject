@@ -16,5 +16,7 @@ public interface BasketRepositoryDB {
 
     void delete(Long id);
 
-    List<Basket> getBasketByOrderId(Long orderId);
+    List<Basket> getBasketsByOrderId(Long orderId);
+
+    Basket getBasketByOrderId(Long orderId);
 }

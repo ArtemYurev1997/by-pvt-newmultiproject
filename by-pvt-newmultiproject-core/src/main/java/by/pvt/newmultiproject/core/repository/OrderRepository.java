@@ -54,7 +54,7 @@ public class OrderRepository  extends FileWorker implements OrderRepositoryDB{
     }
 
     @Override
-    public List<Order> getOrderByUserId(Long userId) {
+    public List<Order> getOrdersByUserId(Long userId) {
         orders = getAllOrders();
         return orders.stream().filter(order -> order.getUserId().equals(userId)).collect(Collectors.toList());
     }
@@ -84,5 +84,10 @@ public class OrderRepository  extends FileWorker implements OrderRepositoryDB{
     @Override
     public void update(Long id, Order order) {
 
+    }
+
+    @Override
+    public Order getOrderByUserId(Long userId) {
+        return null;
     }
 }

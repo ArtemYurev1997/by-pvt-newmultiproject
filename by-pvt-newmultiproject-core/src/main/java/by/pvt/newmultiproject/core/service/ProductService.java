@@ -73,7 +73,8 @@ public class ProductService {
     }
 
     public List<Product> getProductsByIds(List<Long> ids) {
-        List<Product> productList = ids.stream().map(productRepository::getProductById).collect(Collectors.toList());
+
+        List<Product> productList = ids.stream().map(productRepositoryDB::getProductById).collect(Collectors.toList());
         return productList;
     }
 

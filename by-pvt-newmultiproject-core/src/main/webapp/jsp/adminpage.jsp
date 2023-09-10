@@ -11,9 +11,9 @@
 Добро пожаловать,  <c:out value = "${user.fullname}" />
 </div>
 <br>
-
 <b>Добавление товара</b>
-<br>
+</br>
+
 <form name="Form"
       method="post"
       action="http://localhost:8080/hello/productadd">
@@ -49,7 +49,7 @@
 
 <br>
 <b>Удаление товара</b>
-<br>
+</br>
 <form name="Form"
       method="post"
       action="http://localhost:8080/hello/productdelete">
@@ -66,7 +66,7 @@
 
 <br>
 <b>Получение товара по id</b>
-<br>
+</br>
 <form name="Form"
       method="post"
       action="http://localhost:8080/hello/productid">
@@ -82,7 +82,7 @@
 
 <br>
 <b>Обновление товара</b>
-<br>
+</br>
 <form name="Form"
       method="post"
       action="http://localhost:8080/hello/productupdate">
@@ -119,13 +119,13 @@
 
 <br>
 <b>Удаление пользователя</b>
-<br>
+</br>
 <form name="Form"
       method="post"
       action="http://localhost:8080/hello/clientdelete">
       <tаble>
               <tr>
-                  <td><B>Id Product</B></td>
+                  <td><B>Id User</B></td>
                   <td><input type=textbox name="id" size="25" value=" "></td>
               </tr>
       </tаble>
@@ -136,7 +136,7 @@
 
 <br>
 <b>Получение пользователя по id</b>
-<br>
+</br>
 <form name="Form"
       method="post"
       action="http://localhost:8080/hello/clientid">
@@ -152,7 +152,7 @@
 
 <br>
 <b>Обновление пользователя</b>
-<br>
+</br>
 <form name="Form"
       method="post"
       action="http://localhost:8080/hello/clientupdate">
@@ -185,16 +185,9 @@
     <input type=submit value="Update user">
 </form>
 
-<form name="Form"
-      method="get"
-      action="http://localhost:8080/hello/logout">
-    <input type=submit value="LogOut">
-</form>
-
-
 <br>
 <b>Добавление заказа</b>
-<br>
+</br>
 <form name="Form"
       method="post"
       action="http://localhost:8080/hello/orderservletadd">
@@ -227,7 +220,7 @@
 
 <br>
 <b>Удаление заказа</b>
-<br>
+</br>
 <form name="Form"
       method="post"
       action="http://localhost:8080/hello/orderservletdelete">
@@ -242,7 +235,7 @@
 
 <br>
 <b>Получение заказа по id</b>
-<br>
+</br>
 <form name="Form"
       method="post"
       action="http://localhost:8080/hello/orderservletfindbyid">
@@ -282,5 +275,28 @@
     <input type=submit value="Update order">
 </form>
 
+
+<br>
+<b>Получение информации из корзины по Id заказа</b>
+</br>
+<form name="Form"
+      method="post"
+      action="http://localhost:8080/hello/orderservletfindbyorderid">
+      <tаble>
+              <tr>
+                  <td><B>Id Order</B></td>
+                  <td><input type=textbox name="orderId" size="25" value=" "></td>
+              </tr>
+      </tаble>
+    <input type=submit value="Enter">
+</form>
+
+<br>
+</br>
+<form name="Form"
+      method="get"
+      action="http://localhost:8080/hello/logout">
+    <input type=submit value="LogOut">
+</form>
 </body>
 </html>

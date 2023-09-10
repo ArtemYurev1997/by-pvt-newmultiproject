@@ -5,10 +5,10 @@ import java.util.List;
 
 public class BasketDto implements Serializable {
     private Long id;
-    private List<ProductResponse> products;
     private Long productId;
     private Long orderId;
     private Integer count;
+    static long nextId = 1L;
 
     public Long getId() {
         return id;
@@ -17,13 +17,9 @@ public class BasketDto implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public List<ProductResponse> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<ProductResponse> products) {
-        this.products = products;
+    public void setId() {
+        id = nextId;
+        nextId++;
     }
 
     public Long getProductId() {
@@ -54,7 +50,6 @@ public class BasketDto implements Serializable {
     public String toString() {
         return "BasketDto{" +
                 "id=" + id +
-                ", products=" + products +
                 ", productId=" + productId +
                 ", orderId=" + orderId +
                 ", count=" + count +

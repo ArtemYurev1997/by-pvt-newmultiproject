@@ -73,7 +73,7 @@ public class BasketRepositoryDBImpl implements BasketRepositoryDB {
     public void updateBasket(Long id, Basket basket) {
         try {
             Connection connection = jdbcConnection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE shopsch.basket SET name=?, product_id=?, order_id=?, count=? WHERE id=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE shopsch.basket SET product_id=?, order_id=?, count=? WHERE id=?");
             preparedStatement.setLong(4, id);
             preparedStatement.setLong(1, basket.getProductId());
             preparedStatement.setLong(2, basket.getOrderId());
@@ -123,8 +123,8 @@ public class BasketRepositoryDBImpl implements BasketRepositoryDB {
     }
 
     @Override
-    public List<Basket> getBasketByOrderId(Long orderId) {
-        Connection connection = null;
+    public List<Basket> getBasketsByOrderId(Long orderId) {
+        Connection connection;
         List<Basket> baskets = new ArrayList<>();
         try {
             connection = jdbcConnection.getConnection();
@@ -144,5 +144,53 @@ public class BasketRepositoryDBImpl implements BasketRepositoryDB {
             e.printStackTrace();
         }
         return baskets;
+    }
+
+    @Override
+    public Basket getBasketByOrderId(Long orderId) {
+        Connection connection = null;
+        try {
+            connection = jdbcConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from shopsch.basket b where b.order_id=?");
+            preparedStatement.setLong(1, orderId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet == null) {
+                return new Basket();
+            }
+            resultSet.next();
+            return mapperBasketDB.mapResultSetToBasket(resultSet);
+        }
+        catch(SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public List<Long> getProductIdByBucketList(Long orderId) {
+        Connection connection;
+        List<Long> productsIdsList = new ArrayList<>();
+        try {
+            connection = jdbcConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select product_id from shopsch.basket b where b.order_id=?");
+            preparedStatement.setLong(1, orderId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+
+                Long productIds = resultSet.getLong(2);
+
+
+                productsIdsList.add(productIds);
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return productsIdsList;
     }
 }

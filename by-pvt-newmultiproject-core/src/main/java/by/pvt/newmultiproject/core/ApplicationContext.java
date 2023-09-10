@@ -36,13 +36,16 @@ public class ApplicationContext {
     private final ProductRepository productRepository = new ProductRepository(mappingUtils);
     private final BasketRepository basketRepository = new BasketRepository();
 
-    private final ClientService clientService = new ClientService(clientRepository, clientRepositoryDB, mappingUtils);
-    private final ProductService productService = new ProductService(productRepositoryDB, productRepository, mappingUtils, basketRepository, basketRepositoryDB);
-    private final BasketService basketService = new BasketService(basketRepository, productRepository, mappingUtils, basketRepositoryDB);
-
     private final OrderRepository orderRepository = new OrderRepository();
     private final OrderRepositoryDBImpl orderRepositoryDB = new OrderRepositoryDBImpl(postgreConnection, mapperOrderDB);
-    private final OrderService orderService = new OrderService(basketRepository, productRepository, orderRepositoryDB, orderRepository, mappingUtils, productService);
+
+
+    private final ClientService clientService = new ClientService(clientRepository, clientRepositoryDB, mappingUtils);
+    private final ProductService productService = new ProductService(productRepositoryDB, productRepository, mappingUtils, basketRepository, basketRepositoryDB);
+    private final OrderService orderService = new OrderService(basketRepository, basketRepositoryDB, productRepository, productRepositoryDB, clientRepository, clientRepositoryDB, orderRepositoryDB, orderRepository, mappingUtils, productService);
+    private final BasketService basketService = new BasketService(basketRepository, productRepository, mappingUtils, productRepositoryDB, basketRepositoryDB, orderRepositoryDB, orderRepository, orderService);
+
+
 
     private static ApplicationContext applicationContext;
     private static ClientController clientController;

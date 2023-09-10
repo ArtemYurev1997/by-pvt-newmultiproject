@@ -31,7 +31,7 @@ public class OrderController {
     }
 
     public void addOrder(OrderRequest orderRequest) {
-        orderService.addUser(orderRequest);
+        orderService.addOrder(orderRequest);
     }
 
     public Order getOrderById(Long id) {
@@ -40,6 +40,10 @@ public class OrderController {
 
     public void delete(Long id) {
         orderService.delete(id);
+    }
+
+    public OrderResponse getOrderByUserId(Long userId) {
+        return orderService.getOrderByUserId(userId);
     }
 
     public Order updateOrder(Long id, Order newOrder)  {
@@ -54,11 +58,23 @@ public class OrderController {
         return orderService.getOrderByOrderId(orderId);
     }
 
-    public List<OrderResponse> getOrderByUserId(Long userId) {
-        return orderService.getOrderByUser(userId);
+    public List<OrderResponse> getOrdersByUserId(Long userId) {
+        return orderService.getOrdersByUser(userId);
     }
 
     public OrderDto deleteProductByOrderFromBasket(Long productId, Long orderId) {
         return orderService.deleteProductByOrder(productId, orderId);
+    }
+
+    public OrderResponse createOrder(Long productId, Long sessionId) {
+        return orderService.createOrder(productId, sessionId);
+    }
+
+    public OrderResponse changeStatus(Long orderId, Integer count) {
+        return orderService.changeStatus(orderId, count);
+    }
+
+    public OrderResponse getOrder() {
+        return orderService.getOrder();
     }
 }

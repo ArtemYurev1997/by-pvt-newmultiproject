@@ -74,14 +74,6 @@ public class BasketRepository extends FileWorker {
         return productIdList;
     }
 
-//    public void deleteProductByProductIdAndOrderId(Long productId, Long orderId) {
-//        List<Basket> baskets = getBucketsByOrderId(orderId);
-//
-//        Optional<Long> idProduct = baskets.stream().map(Basket::getProductId).findFirst();
-//
-//    }
-
-
 
     public void delete(Long id) {
         buckets = getAllBuckets();

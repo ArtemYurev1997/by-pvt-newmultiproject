@@ -19,5 +19,7 @@ public interface OrderRepositoryDB {
 
     void update(Long id, Order order);
 
-    List<Order> getOrderByUserId(Long userId);
+    List<Order> getOrdersByUserId(Long userId);
+
+    Order getOrderByUserId(Long userId);
 }

@@ -79,6 +79,15 @@ public class MappingUtils {
         return dto;
     }
 
+    public Order mapToOrderEntityFromResponse(OrderResponse orderResponse){
+        Order dto = new Order();
+        dto.setId(orderResponse.getId());
+        dto.setCost(orderResponse.getCost());
+        dto.setUserId(orderResponse.getUserId());
+        dto.setStatus(orderResponse.getStatus());
+        return dto;
+    }
+
     public BasketDto mapToBasketDto(Basket basket){
         BasketDto basketDto = new BasketDto();
         basketDto.setId(basket.getId());

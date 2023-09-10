@@ -16,6 +16,24 @@
     <input type=submit value="Show all products">
 </form>
 
+<b>Создание нового заказа</b>
+<br>
+<form name="Form"
+      method="post"
+      action="http://localhost:8080/hello/orderservletcreateorder">
+    <tаble>
+        <tr>
+            <td><B>Product Id</B></td>
+            <td><input type=textbox name="productId" size="25" value=" "></td>
+        </tr>
+        <tr>
+            <td><B>Session Id</B></td>
+            <td><input type=textbox name="sessionId" size="25" value=" "></td>
+        </tr>
+    </tаble>
+        <input type=submit value="Create new order">
+</form>
+
 <form name="Form"
       method="get"
       action="http://localhost:8080/hello/logout">
